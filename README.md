@@ -1,4 +1,5 @@
 # Getting Started with Create React App
+This is a Cart made using React
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
