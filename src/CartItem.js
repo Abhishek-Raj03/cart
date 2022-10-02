@@ -13,32 +13,46 @@ class CartItem extends React.Component {
   }
 
   //increase cart value
-  increaseQuantity = ()=> { // arrow fun used for binding this
+  increaseQuantity = () => {
+    // arrow fun used for binding this
+
+    // react does 'Batching' for us in SetState function
+
     // setState form 1
+    // if there is more than 1 setState function of this form in a function then the last one will executes
+
     // this.setState({
     //     qty:this.state.qty+1
     // })
 
+    // setState is asysncronus
     // setState form 2 : used when changed state depends on prevous state
-    this.setState((prevState) => {
+    // if there is more than one setState function then react will put all setState function in a queue and executes it one by one
+    this.setState(
+      (prevState) => {
         return {
-            qty: this.state.qty + 1
-        }
-    })  
-  }
+          qty: this.state.qty + 1,
+        };
+        // callback function in state function executes after setState executes
+      },
+      () => {
+        console.log(this.state);
+      }
+    );
+  };
   // decrease cart value
-  decreaseQuantity = ()=> {
-    if(this.state.qty == 1 ) {
-        return;
+  decreaseQuantity = () => {
+    if (this.state.qty === 1) {
+      return;
     }
     this.setState((prevState) => {
-        return {
-            qty: this.state.qty - 1
-        }
-    })
-  }
+      return {
+        qty: this.state.qty - 1,
+      };
+    });
+  };
   // delete cart item
-  
+
   render() {
     const { price, title, qty } = this.state;
     return (
@@ -70,7 +84,7 @@ class CartItem extends React.Component {
               src="https://cdn-icons-png.flaticon.com/512/484/484662.png"
               alt="delete"
               className="action-icons"
-            //   onClick={this.delete}
+              //   onClick={this.delete}
             />
           </div>
         </div>
