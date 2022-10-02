@@ -49,6 +49,13 @@ class Cart extends React.Component {
         products: products
     })
  }
+ handleDeleteProduct = (id)=> {
+    const {products} = this.state;
+    const items = products.filter((item) => item.id !== id );
+    this.setState({
+        products: items
+    })
+ }
   render() {
     const { products } = this.state;
     // let arr=[2,6,7,4,3,"rohan"]
@@ -64,6 +71,7 @@ class Cart extends React.Component {
             key={product.id}
             increaseQuantity={this.handleIncreaseQuantity}
             decreaseQuantity={this.handleDecreaseQuantity}
+            deleteProduct={this.handleDeleteProduct}
         />
          );
         })

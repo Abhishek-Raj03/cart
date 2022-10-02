@@ -89,7 +89,9 @@ class CartItem extends React.Component {
               src="https://cdn-icons-png.flaticon.com/512/484/484662.png"
               alt="delete"
               className="action-icons"
-              //   onClick={this.delete}
+                onClick={()=> {
+                  this.props.deleteProduct(this.props.product.id)
+                }}
             />
           </div>
         </div>
