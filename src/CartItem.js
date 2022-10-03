@@ -1,6 +1,6 @@
 import React from "react";
 
-class CartItem extends React.Component {
+const CartItem = (props) => {
   // constructor() {
   //   super();
   //   this.state = {
@@ -51,11 +51,8 @@ class CartItem extends React.Component {
   //     };
   //   });
   // };
-  // delete cart item
   
-
-  render() {
-    const { price, title, qty } = this.props.product;
+    const { price, title, qty } = props.product;
     return (
       <div className="cart-item">
         <div className="left-block">
@@ -72,7 +69,7 @@ class CartItem extends React.Component {
               alt="minus"
               className="action-icons"
               onClick={() => {
-                this.props.decreaseQuantity(this.props.product)
+                props.decreaseQuantity(props.product)
               }}
             />
 
@@ -81,7 +78,7 @@ class CartItem extends React.Component {
               alt="plus"
               className="action-icons"
               onClick={() => {
-                this.props.increaseQuantity(this.props.product)
+                props.increaseQuantity(props.product)
               }}
             />
 
@@ -90,14 +87,14 @@ class CartItem extends React.Component {
               alt="delete"
               className="action-icons"
                 onClick={()=> {
-                  this.props.deleteProduct(this.props.product.id)
+                  props.deleteProduct(props.product.id)
                 }}
             />
           </div>
         </div>
       </div>
     );
-  }
+  
 }
 const styles = {
   image: {
