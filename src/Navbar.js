@@ -1,4 +1,5 @@
 import React from "react";
+// import Cart from "./Cart";
 
 const Navbar = (props) => {
   return (
@@ -9,7 +10,7 @@ const Navbar = (props) => {
           src="https://cdn-icons-png.flaticon.com/512/4290/4290854.png"
           alt="cart-icon"
         />
-        <span style={styles.cartCount}>3</span>
+        <span style={styles.cartCount}>{props.num}</span>
       </div>
     </div>
   );
