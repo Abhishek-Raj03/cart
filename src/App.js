@@ -8,24 +8,24 @@ class App extends React.Component {
     this.state = {
       products: [
         {
-          price: 99,
+          price: 6999,
           title: "Watch",
-          qty: 1,
-          img: "",
+          qty: 4,
+          img: "https://images.unsplash.com/photo-1596460107916-430662021049?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80",
           id: 1,
         },
         {
-          price: 999,
+          price: 73999,
           title: "Phone",
-          qty: 10,
-          img: "",
+          qty: 2,
+          img: "https://images.unsplash.com/photo-1580910051074-3eb694886505?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=765&q=80",
           id: 2,
         },
         {
-          price: 9999,
+          price: 89000,
           title: "Laptop",
-          qty: 4,
-          img: "",
+          qty: 1,
+          img: "https://images.unsplash.com/photo-1504707748692-419802cf939d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1447&q=80",
           id: 3,
         },
       ],
@@ -58,12 +58,23 @@ class App extends React.Component {
           products: items
       })
  }
+ total = () => {
+  const { products } = this.state;
+  let total=0;
+  products.forEach((product)=> {
+    total += (product.price*product.qty)
+  })
+  return total
+ }
+ 
   render() {
     const { products } = this.state;
     let count=0;
     products.forEach((product)=> {
       count += product.qty
     })
+      
+     
   return (
     <div className="App">
       {/* <h1>Cart</h1> */}
@@ -74,6 +85,9 @@ class App extends React.Component {
         decreaseQuantity={this.handleDecreaseQuantity}
         deleteProduct={this.handleDeleteProduct}
       />
+      <div style={{ padding: 10, fontSize: 20 }}>
+        TOTAL: {this.total()}
+      </div>
     </div>
   );
   }
